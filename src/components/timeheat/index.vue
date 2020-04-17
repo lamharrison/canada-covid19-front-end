@@ -21,7 +21,7 @@ export default {
     name: "timeheat",
     data(){
         return{
-            api: "/timeline",
+            api: "./timeline.json",
             loaded: false,
             timeline: [],
             cd: [
@@ -48,7 +48,7 @@ export default {
                     type: 'heatmap',
                     animations: {enabled: false,}
                 },
-                dataLabels: { enabled: false },  
+                dataLabels: { enabled: false },
                 tooltip: { enabled: false},
                 legend: { show: false },
                 xaxis: {
@@ -61,11 +61,11 @@ export default {
                     },
                 },
                 yaxis:{
-                    
+
                     labels:{
                         formatter: function(val){
                             if(val) return val + " h"
-                            
+
                         },
                         style: {
                             fontSize:  '8px',
@@ -81,7 +81,7 @@ export default {
                 stroke: {
                     show: true,
                     colors: ["#373D41"],
-                    width: 1, 
+                    width: 1,
                 },
                 grid: {
                     borderColor: 'rgba(55,61,65,1)',
@@ -110,7 +110,7 @@ export default {
                     }
                 }
             },
-            
+
         }
     },
     created(){
@@ -143,21 +143,21 @@ export default {
 
                         last = date
 
-                        
+
                         //console.log(d.getHours())
                     }
 
                     this.loaded = true
 
                 }
-                
+
             })
         },
 
         toRightSlot(dateObj, sameDay){
 
             let h = dateObj.getHours()
-            
+
             this.cd.forEach((el, i) => {
 
                 if(sameDay){
@@ -175,11 +175,11 @@ export default {
                     }
 
                 }
-                
-                
+
+
             });
-            
-            
+
+
         },
 
         // 翻译，由translate.js提供字典

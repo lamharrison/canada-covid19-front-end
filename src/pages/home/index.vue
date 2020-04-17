@@ -61,7 +61,10 @@
     <div class="author">
       <div class="author-inner">
         <h3>{{getLang("Author")}}: </h3><br>
-        <a href="https://github.com/lamharrison" target="_blank">@Zhishu Lin</a>
+        <a href="https://github.com/lamharrison" target="_blank">Zhishu Lin</a>
+      </div>
+      <div class="author-inner">
+        <a href="https://github.com/lamharrison" target="_blank">Jiaming Lu</a>
       </div>
     </div>
 
@@ -152,9 +155,10 @@ export default {
       listSearch: "",
 
       // API URLs
-      api: "/",
-      api_history: "/historyfigures",
-      api_locations: "/locations",
+      api: "./data.json",
+      api_new_data:"./new_data.json",
+      api_history: "./history.json",
+      api_locations: "./locations.json",
       api_eu: "https://global.covid19uk.live/majoreu",
       api_global_status: "https://global.covid19uk.live/status",
       api_prediction: "./uk.json",
@@ -274,9 +278,9 @@ export default {
 
     // Get Figure Data from API
     // 从API获取基本数字数据
-    getData(api){
+    getData(){
 
-      genGet(api, {}, false, (res)=>{
+      genGet(this.api_new_data, {}, false, (res)=>{
 
         if(res.status){
           this.allData = res.data.data
@@ -306,9 +310,9 @@ export default {
 
     // Get history data from api and generate charts
     // 从API获取历史数据，生成图表
-    getHistory(api){
+    getHistory(){
 
-      genGet(api, {}, false, async (res)=>{
+      genGet(this.api_history, {}, false, async (res)=>{
 
         if(res.status){
 
@@ -394,9 +398,9 @@ export default {
 
     // Get all location center point from api
     // 获取所有的地理位置中心点数据
-    getLocations(api){
+    getLocations(){
       var that = this
-      genGet(api, {}, false, (res)=>{
+      genGet(this.api_locations, {}, false, (res)=>{
         let d = res.data.data
         this.geoAll = res.data.data
 
